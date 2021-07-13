@@ -14,37 +14,43 @@ export default function Form(props) {
           <input
             type="text"
             name="username"
-            value={values.username}
-            onChange={onChange}
+            // value={values.username}
+            // onChange={onChange}
           />
         </label>
+        <br />
 
         <label>
           Email:
           <input
             type="text"
             name="email"
-            value={values.email}
-            onChange={onChange}
+            // value={values.email}
+            // onChange={onChange}
           />
         </label>
+        <br />
+
         <label>
           Password:
           <input
             type="text"
             name="password"
-            value={values.password}
-            onChange={onChange}
+            // value={values.password}
+            // onChange={onChange}
           />
         </label>
+        <br />
+
         <label>I agree to terms of service</label>
         <input
           type="checkbox"
           name="tos"
-          checked={values.tos}
-          onChange={onChange}
+          //   checked={values.tos}
+          //   onChange={onChange}
         />
       </div>
+      <button>Submit User</button>
     </form>
   );
 }
