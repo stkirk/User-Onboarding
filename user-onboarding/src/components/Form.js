@@ -3,6 +3,14 @@ import React from "react";
 export default function Form(props) {
   const { values, submit, change, disabled, errors } = props;
 
+  const onSubmit = (event) => {
+    debugger;
+  };
+
+  const onChange = (event) => {
+    debugger;
+  };
+
   return (
     <form className="form-container">
       <h3>Add a new user</h3>
@@ -16,8 +24,8 @@ export default function Form(props) {
           <input
             type="text"
             name="username"
-            // value={values.username}
-            // onChange={onChange}
+            value={values.username}
+            onChange={onChange}
           />
         </label>
         <br />
@@ -27,8 +35,8 @@ export default function Form(props) {
           <input
             type="text"
             name="email"
-            // value={values.email}
-            // onChange={onChange}
+            value={values.email}
+            onChange={onChange}
           />
         </label>
         <br />
@@ -38,8 +46,8 @@ export default function Form(props) {
           <input
             type="text"
             name="password"
-            // value={values.password}
-            // onChange={onChange}
+            value={values.password}
+            onChange={onChange}
           />
         </label>
         <br />
@@ -48,8 +56,8 @@ export default function Form(props) {
         <input
           type="checkbox"
           name="tos"
-          //   checked={values.tos}
-          //   onChange={onChange}
+          checked={values.tos}
+          onChange={onChange}
         />
       </div>
       <button>Submit User</button>
