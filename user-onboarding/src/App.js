@@ -34,10 +34,25 @@ function App() {
   const [disabled, setDisabled] = useState(initialDisabled); //boolean
 
   //***SCHEMA VALIDATION HELPER FUNCTION***/
+  //pass in same arguments as are used in onChange event handlers to validate those values
+  const validate = (name, value) => {
+    yup
+      .reach(schema, name)
+      .validate(value)
+      .then((valid) => {
+        console.log("VALID", valid);
+        setFormErrors({ ...formErrors, [name]: "" });
+      })
+      .catch((err) => {
+        console.log("ERR", err);
+        setFormErrors({ ...formErrors, [name]: err.errors[0] });
+      });
+  };
 
   //***EVENT HANDLERS***/
   const change = (name, value) => {
     // Run validation with yup HERE
+    validate(name, value);
 
     setFormValues({
       ...formValues,
