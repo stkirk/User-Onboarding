@@ -17,20 +17,39 @@ const initialFormErrors = {
   tos: "",
 };
 
-const initialFriends = [];
+const initialUsers = [];
 
 const initialDisabled = true;
 
 function App() {
   //***STATES****
-  const [users, setUsers] = useState(initialFriends);
-  const [formValues, setFormValues] = useState(initialFormValues);
-  const [formErrors, setFormErrors] = useState(initialFormErrors);
-  const [disabled, setDisabled] = useState(initialDisabled);
+  const [users, setUsers] = useState(initialUsers); //array of user objects
+  const [formValues, setFormValues] = useState(initialFormValues); //object
+  const [formErrors, setFormErrors] = useState(initialFormErrors); //object
+  const [disabled, setDisabled] = useState(initialDisabled); //boolean
+
+  //***POST REQUEST HELPER FUNCTION***/
+  const postNewUser = (newUser) => {};
+
+  //***SCHEMA VALIDATION HELPER FUNCTION***/
+
+  //***EVENT HANDLERS***/
+  const change = () => {};
+
+  const submit = () => {};
+
+  //***useEffect to toggle disabled */
+
   return (
     <div className="App">
       <h1>User Onboarding App</h1>
-      <Form />
+      <Form
+        values={formValues}
+        change={change}
+        submit={submit}
+        disabled={disabled}
+        errors={formErrors}
+      />
     </div>
   );
 }

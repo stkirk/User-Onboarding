@@ -1,6 +1,8 @@
 import React from "react";
 
 export default function Form(props) {
+  const { values, submit, change, disabled, errors } = props;
+
   return (
     <form className="form-container">
       <h3>Add a new user</h3>
