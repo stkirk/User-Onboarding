@@ -33,9 +33,6 @@ function App() {
   const [formErrors, setFormErrors] = useState(initialFormErrors); //object
   const [disabled, setDisabled] = useState(initialDisabled); //boolean
 
-  //***POST REQUEST HELPER FUNCTION***/
-  const postNewUser = (newUser) => {};
-
   //***SCHEMA VALIDATION HELPER FUNCTION***/
 
   //***EVENT HANDLERS***/
@@ -48,7 +45,31 @@ function App() {
     });
   };
 
-  const submit = () => {};
+  //***POST REQUEST HELPER FUNCTION FOR SUBMIT CHANGE HANDLER***/
+  const postNewUser = (newUser) => {
+    axios
+      .post("https://reqres.in/api/users", newUser)
+      .then((res) => {
+        console.log("RES.DATA", res.data);
+        // debugger;
+        setUsers([...users, res.data]);
+        setFormValues(initialFormValues);
+      })
+      .catch((err) => {
+        debugger;
+        console.log("ERROR", err);
+      });
+  };
+
+  const submit = () => {
+    const newUser = {
+      username: formValues.username.trim(),
+      email: formValues.email.trim(),
+      password: formValues.password.trim(),
+      tos: formValues.tos,
+    };
+    postNewUser(newUser);
+  };
 
   //***useEffect to toggle disabled */
 

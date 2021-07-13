@@ -71,7 +71,11 @@ export default function Form(props) {
           onChange={onChange}
         />
       </div>
-      <button disabled={disabled}>Submit User</button>
+      <button
+      //   disabled={disabled}
+      >
+        Submit User
+      </button>
     </form>
   );
 }
