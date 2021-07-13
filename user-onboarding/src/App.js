@@ -34,7 +34,14 @@ function App() {
   //***SCHEMA VALIDATION HELPER FUNCTION***/
 
   //***EVENT HANDLERS***/
-  const change = () => {};
+  const change = (name, value) => {
+    // Run validation with yup HERE
+
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
 
   const submit = () => {};
 

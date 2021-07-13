@@ -3,12 +3,16 @@ import React from "react";
 export default function Form(props) {
   const { values, submit, change, disabled, errors } = props;
 
+  //   Event Handlers
   const onSubmit = (event) => {
     debugger;
   };
 
   const onChange = (event) => {
-    debugger;
+    // debugger;
+    const { name, value, type, checked } = event.target;
+    const valueToUse = type === "checkbox" ? checked : value;
+    change(name, valueToUse);
   };
 
   return (
