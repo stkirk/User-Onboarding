@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Form from "./components/Form";
 
+//Yup validation imports
+import * as yup from "yup";
+import schema from "./components/FormSchema";
+import axios from "axios";
+
 //***INITIAL STATE VALUES***/
 const initialFormValues = {
   username: "",
