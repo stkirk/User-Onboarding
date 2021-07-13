@@ -39,3 +39,6 @@
 .form-inputs {
   margin: 2% 0;
 }
+.errors {
+  color: red;
+}
