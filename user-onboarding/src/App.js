@@ -83,6 +83,11 @@ function App() {
         disabled={disabled}
         errors={formErrors}
       />
+      <div className="users-container">
+        {users.map((user) => {
+          return <pre key={user.id}>{JSON.stringify(user)}</pre>;
+        })}
+      </div>
     </div>
   );
 }
