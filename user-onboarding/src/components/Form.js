@@ -5,6 +5,7 @@ export default function Form(props) {
 
   //   Event Handlers
   const onSubmit = (event) => {
+    event.preventDefault();
     debugger;
   };
 
@@ -16,7 +17,7 @@ export default function Form(props) {
   };
 
   return (
-    <form className="form-container">
+    <form onSubmit={onSubmit} className="form-container">
       <h3>Add a new user</h3>
 
       <div className="errors">{/* Render validation errors here */}</div>
@@ -64,7 +65,7 @@ export default function Form(props) {
           onChange={onChange}
         />
       </div>
-      <button>Submit User</button>
+      <button disabled={disabled}>Submit User</button>
     </form>
   );
 }
