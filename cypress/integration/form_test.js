@@ -76,5 +76,28 @@ describe("User-Onboarding", () => {
     });
   });
 
+  //form validation test
+  describe("form inputs are validated", () => {
+    it("validates user input needed", () => {
+      usernameInput().type("NewUser");
+      usernameInput().clear();
+      usernameError().should("exist");
+    });
+    it("validates email input needed", () => {
+      emailInput().type("email@fake.com");
+      emailInput().clear();
+      usernameError().should("exist");
+      emailInput().type("email");
+      cy.contains("Must enter valid email").should("exist");
+    });
+    it("validates password input needed", () => {
+      passwordInput().type("abc123456");
+      passwordInput().clear();
+      passwordError().should("exist");
+      passwordInput().type("abc");
+      cy.contains("Password minimum 8 characters").should("exist");
+    });
+  });
+
   //close parent describe
 });
