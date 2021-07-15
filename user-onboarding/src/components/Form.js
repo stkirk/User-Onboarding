@@ -22,10 +22,10 @@ export default function Form(props) {
       <h3>Add a new user</h3>
 
       <div className="errors">
-        <div>{errors.username}</div>
-        <div>{errors.email}</div>
-        <div>{errors.password}</div>
-        <div>{errors.tos}</div>
+        <div data-cy="usernameError">{errors.username}</div>
+        <div data-cy="emailError">{errors.email}</div>
+        <div data-cy="passwordError">{errors.password}</div>
+        <div data-cy="tosError">{errors.tos}</div>
       </div>
 
       <div className="form-inputs">
@@ -33,6 +33,7 @@ export default function Form(props) {
         <label>
           Username:
           <input
+            data-cy="usernameInput"
             type="text"
             name="username"
             value={values.username}
@@ -44,6 +45,7 @@ export default function Form(props) {
         <label>
           Email:
           <input
+            data-cy="emailInput"
             type="text"
             name="email"
             value={values.email}
@@ -55,6 +57,7 @@ export default function Form(props) {
         <label>
           Password:
           <input
+            data-cy="passwordInput"
             type="text"
             name="password"
             value={values.password}
@@ -65,6 +68,7 @@ export default function Form(props) {
 
         <label>I agree to terms of service</label>
         <input
+          data-cy="tosCheckbox"
           type="checkbox"
           name="tos"
           checked={values.tos}

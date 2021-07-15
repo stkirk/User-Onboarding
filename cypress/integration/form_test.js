@@ -15,6 +15,23 @@ describe("User-Onboarding", () => {
   });
 
   //CONSTANTS******
+  const usernameInput = () => cy.get("[data-cy=usernameInput]");
+  const emailInput = () => cy.get("[data-cy=emailInput]");
+  const passwordInput = () => cy.get("[data-cy=passwordInput]");
+  const tosCheckbox = () => cy.get("[data-cy=tosCheckbox]");
+  //errors
+  const usernameError = () => cy.get("[data-cy=usernameError]");
+  const emailError = () => cy.get("[data-cy=emailError]");
+  const passwordError = () => cy.get("[data-cy=passwordError]");
+  const tosError = () => cy.get("[data-cy=tosError]");
+
+  //make sure my elements as constants exist
+  it("the elements exist", () => {
+    usernameInput().should("exist");
+    emailInput().should("exist");
+    passwordInput().should("exist");
+    tosCheckbox().should("exist");
+  });
 
   //close parent describe
 });
