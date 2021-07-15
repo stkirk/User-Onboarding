@@ -1,0 +1,103 @@
+describe("User-Onboarding", () => {
+  //navigate to dev server
+  beforeEach(() => {
+    cy.visit("http://localhost:3000");
+  });
+  //Make sure tests are working
+  it("sanity checks", () => {
+    //step 1 - make assertion(s) with expect methods
+    //these are examples of unit tests
+    expect(5).to.equal(5);
+    expect(1 + 2).to.equal(3);
+    //when using non-primitive data types use eql for affirmatives
+    expect({}).to.eql({});
+    expect({}).to.not.equal({});
+  });
+
+  //CONSTANTS******
+  const usernameInput = () => cy.get("[data-cy=usernameInput]");
+  const emailInput = () => cy.get("[data-cy=emailInput]");
+  const passwordInput = () => cy.get("[data-cy=passwordInput]");
+  const tosCheckbox = () => cy.get("[data-cy=tosCheckbox]");
+  const submitButton = () => cy.get("[data-cy=submitButton]");
+  //errors
+  const usernameError = () => cy.get("[data-cy=usernameError]");
+  const emailError = () => cy.get("[data-cy=emailError]");
+  const passwordError = () => cy.get("[data-cy=passwordError]");
+  const tosError = () => cy.get("[data-cy=tosError]");
+
+  //make sure my elements as constants exist
+  it("the elements exist", () => {
+    usernameInput().should("exist");
+    emailInput().should("exist");
+    passwordInput().should("exist");
+    tosCheckbox().should("exist");
+  });
+
+  //Input tests
+  describe("Enter text into inputs and verify what was entered is contained in the input", () => {
+    it("can type in username input", () => {
+      usernameInput()
+        .should("have.value", "")
+        .type("TestUser")
+        .should("have.value", "TestUser");
+    });
+    it("can type in email input", () => {
+      emailInput()
+        .should("have.value", "")
+        .type("fake@email.com")
+        .should("have.value", "fake@email.com");
+    });
+    it("can type in password input", () => {
+      passwordInput()
+        .should("have.value", "")
+        .type("abc12345")
+        .should("have.value", "abc12345");
+    });
+  });
+
+  //checkbox test
+  describe("check the terms of service checkbox", () => {
+    it("check the tos checkbox", () => {
+      tosCheckbox().check().should("have.checked", "checked");
+    });
+  });
+
+  //submit form test
+  describe("fill out form and submit", () => {
+    it("can fill out username, email, password, check tos, and submit", () => {
+      usernameInput().type("NewUser");
+      emailInput().type("fake@email.com");
+      passwordInput().type("abc123456");
+      tosCheckbox().check();
+      submitButton().click();
+      //verify form data posted to DOM
+      cy.contains("NewUser").should("exist");
+    });
+  });
+
+  //form validation test
+  describe("form inputs are validated", () => {
+    it("validates user input needed", () => {
+      usernameInput().type("NewUser");
+      usernameInput().clear();
+      usernameError().should("exist");
+    });
+    it("validates email input needed", () => {
+      emailInput().type("email@fake.com");
+      emailInput().clear();
+      usernameError().should("exist");
+      emailInput().type("email");
+      cy.contains("Must enter valid email").should("exist");
+    });
+    it("validates password input needed", () => {
+      passwordInput().type("abc123456");
+      passwordInput().clear();
+      passwordError().should("exist");
+      passwordInput().type("abc");
+      cy.contains("Password minimum 8 characters").should("exist");
+    });
+  });
+
+  //close parent describe
+});
