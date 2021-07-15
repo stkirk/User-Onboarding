@@ -40,11 +40,11 @@ function App() {
       .reach(schema, name)
       .validate(value)
       .then((valid) => {
-        console.log("VALID", valid);
+        // console.log("VALID", valid);
         setFormErrors({ ...formErrors, [name]: "" });
       })
       .catch((err) => {
-        console.log("ERR", err);
+        // console.log("ERR", err);
         setFormErrors({ ...formErrors, [name]: err.errors[0] });
       });
   };
@@ -87,6 +87,9 @@ function App() {
   };
 
   //***useEffect to toggle disabled */
+  useEffect(() => {
+    schema.isValid(formValues).then((valid) => setDisabled(!valid));
+  }, [formValues]);
 
   return (
     <div className="App">
