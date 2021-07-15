@@ -33,5 +33,29 @@ describe("User-Onboarding", () => {
     tosCheckbox().should("exist");
   });
 
+  //Input tests
+  describe("Enter text into inputs and verify what was entered is contained in the input", () => {
+    it("can type in username input", () => {
+      usernameInput()
+        .should("have.value", "")
+        .type("TestUser")
+        .should("have.value", "TestUser");
+    });
+    it("can type in email input", () => {
+      emailInput()
+        .should("have.value", "")
+        .type("fake@email.com")
+        .should("have.value", "fake@email.com");
+    });
+    it("can type in password input", () => {
+      passwordInput()
+        .should("have.value", "")
+        .type("abc12345")
+        .should("have.value", "abc12345");
+    });
+  });
+
+  //checkbox test
+
   //close parent describe
 });
