@@ -56,6 +56,11 @@ describe("User-Onboarding", () => {
   });
 
   //checkbox test
+  describe("check the terms of service checkbox", () => {
+    it("check the tos checkbox", () => {
+      tosCheckbox().check().should("have.checked", "checked");
+    });
+  });
 
   //close parent describe
 });
