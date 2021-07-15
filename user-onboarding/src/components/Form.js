@@ -75,7 +75,9 @@ export default function Form(props) {
           onChange={onChange}
         />
       </div>
-      <button disabled={disabled}>Submit User</button>
+      <button data-cy="submitButton" disabled={disabled}>
+        Submit User
+      </button>
     </form>
   );
 }

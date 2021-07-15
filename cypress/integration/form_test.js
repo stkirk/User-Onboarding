@@ -19,6 +19,7 @@ describe("User-Onboarding", () => {
   const emailInput = () => cy.get("[data-cy=emailInput]");
   const passwordInput = () => cy.get("[data-cy=passwordInput]");
   const tosCheckbox = () => cy.get("[data-cy=tosCheckbox]");
+  const submitButton = () => cy.get("[data-cy=submitButton]");
   //errors
   const usernameError = () => cy.get("[data-cy=usernameError]");
   const emailError = () => cy.get("[data-cy=emailError]");
@@ -59,6 +60,19 @@ describe("User-Onboarding", () => {
   describe("check the terms of service checkbox", () => {
     it("check the tos checkbox", () => {
       tosCheckbox().check().should("have.checked", "checked");
+    });
+  });
+
+  //submit form test
+  describe("fill out form and submit", () => {
+    it("can fill out username, email, password, check tos, and submit", () => {
+      usernameInput().type("NewUser");
+      emailInput().type("fake@email.com");
+      passwordInput().type("abc123456");
+      tosCheckbox().check();
+      submitButton().click();
+      //verify form data posted to DOM
+      cy.contains("NewUser").should("exist");
     });
   });
 
